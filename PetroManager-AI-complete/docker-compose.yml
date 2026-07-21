@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: petromanager-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: petromanager
+      POSTGRES_PASSWORD: petromanager
+      POSTGRES_DB: petromanager
+    ports:
+      - "5432:5432"
+    volumes:
+      - petromanager_pgdata:/var/lib/postgresql/data
+
+volumes:
+  petromanager_pgdata:
